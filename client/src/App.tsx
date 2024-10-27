@@ -1,35 +1,42 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import ReactDOM from "react-dom/client";
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
+
+import Home from "./Pages/Home";
+import Navbar from "./Components/Navbar";
+import Login from "./Pages/Login";
+import Signup from "./Pages/Signup";
+import Footer from "./Components/Footer";
+import ServicesPage from "./Pages/ServicesPage";
+import ShopDetails from "./Pages/ShopDetails";
 
 function App() {
-  const [count, setCount] = useState(0)
-
+  const location = useLocation();
+  
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      {/* Conditionally render Navbar if not on the login page */}
+      {(location.pathname !== '/login' && location.pathname !== '/signup') && <Navbar />}
+
+      
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/services" element={<ServicesPage />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup/>} />
+        <Route path="/det" element={<ShopDetails/>} />
+
+        {/* Add other routes here */}
+      </Routes>
+      {(location.pathname !== '/login' && location.pathname !== '/signup') && <Footer />}
     </>
-  )
+  );
 }
 
-export default App
+// Wrap the App component with BrowserRouter in the main entry file (index.tsx or main.tsx)
+export default function Root() {
+  return (
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  );
+}
