@@ -1,6 +1,9 @@
 import React, {useState} from "react";
+import { Link } from "react-router-dom"
+
 
 interface ShopCardProps {
+  id: string
   name: string;
   location: string;
   rating: string;
@@ -10,6 +13,7 @@ interface ShopCardProps {
 }
 
 const ShopCard: React.FC<ShopCardProps> = ({
+  id,
   name,
   location,
   rating,
@@ -38,7 +42,9 @@ const ShopCard: React.FC<ShopCardProps> = ({
       <div className="w-2/3 p-6 text-gray-900">
         {/* Header */}
         <div className="flex items-center justify-between">
-          <h2 className="text-xl font-semibold text-[#7BD3EA]">{name}</h2>
+          <Link to={`/service/${name}/${id}`}>
+            <h2 className="text-xl font-semibold text-[#7BD3EA]">{name}</h2>
+          </Link>
           <button
             className={`text-xl ${
               isFavorite ? "text-[#FF9D3D]" : "text-gray-500"
@@ -94,7 +100,7 @@ const ShopCard: React.FC<ShopCardProps> = ({
             Visit now
           </button>
         </div>
-
+        
         {/* Recent Enquiries */}
         <p className="text-sm text-gray-500 mt-4 flex items-center space-x-1">
           <i className="fas fa-chart-line"></i>

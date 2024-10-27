@@ -1,6 +1,6 @@
 import mongoose, { Schema, Document } from "mongoose";
 
-export interface Review {
+export interface Review extends Document{
     username: string;
     comment: string;
     rating: number; 
