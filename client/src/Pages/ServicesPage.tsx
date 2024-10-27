@@ -5,7 +5,6 @@ import ShopCard from "../Components/ShopCard";
 export default function ServicesPage() {
   return (
     <>
-    <Searchbox/>
     <div >
 
 <ShopCard
