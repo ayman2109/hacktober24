@@ -2,12 +2,13 @@ import axios from 'axios';
 import React, { useState } from 'react';
 
 export default function Login() {
-    const [formData, setFormData] = useState({
-        email: '',
-        password: '',
-        remember: false,
-      });
-      // Handle input changes
+  const [formData, setFormData] = useState({
+    email: '',
+    password: '',
+    remember: false,
+  });
+
+  // Handle input changes
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value, type, checked } = e.target;
     setFormData((prevData) => ({
@@ -30,31 +31,32 @@ export default function Login() {
       console.error('Error:', error);
     }
   };
+
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500">
-      <form onSubmit={handleSubmit} className="max-w-sm w-full bg-white/30 backdrop-blur-lg rounded-lg p-8 shadow-lg border border-white/20">
+    <div className="flex items-center justify-center min-h-screen bg-gray-100">
+      <form onSubmit={handleSubmit} className="max-w-sm w-full bg-white rounded-lg p-8 shadow-md border border-gray-200">
         <div className="mb-5">
-          <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your email</label>
+          <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-700">Your email</label>
           <input
             type="email"
             id="email"
-            name='email'
+            name="email"
             value={formData.email}
             onChange={handleChange}
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder="name@flowbite.com"
+            className="bg-white border border-gray-300 text-gray-700 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+            placeholder="name@example.com"
             required
           />
         </div>
         <div className="mb-5">
-          <label htmlFor="password" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your password</label>
+          <label htmlFor="password" className="block mb-2 text-sm font-medium text-gray-700">Your password</label>
           <input
             type="password"
             id="password"
-            name='password'
+            name="password"
             value={formData.password}
             onChange={handleChange}
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            className="bg-white border border-gray-300 text-gray-700 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
             required
           />
         </div>
@@ -63,21 +65,21 @@ export default function Login() {
             <input
               id="remember"
               type="checkbox"
-              name='remember'
+              name="remember"
               checked={formData.remember}
               onChange={handleChange}
-              className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800"
-              required
+              className="w-4 h-4 border border-gray-300 rounded bg-white focus:ring-3 focus:ring-blue-300"
             />
           </div>
-          <label htmlFor="remember" className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Remember me</label>
+          <label htmlFor="remember" className="ml-2 text-sm font-medium text-gray-700">Remember me</label>
         </div>
         <button
           type="submit"
-          className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          className="text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full px-5 py-2.5 text-center"
         >
           Submit
         </button>
+        <p className="block mb-2 text-sm font-medium text-gray-700">If you do not have an account. <span className="block mb-2 text-sm font-medium text-blue-700" ><a href="/signup">Sign up</a></span></p>
       </form>
     </div>
   );

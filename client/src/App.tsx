@@ -8,6 +8,8 @@ import Signup from "./Pages/Signup";
 import Footer from "./Components/Footer";
 import ServicesPage from "./Pages/ServicesPage";
 import ShopHome from "./Pages/ShopHome";
+import Business from "./Pages/Business";
+
 
 function App() {
   const location = useLocation();
@@ -24,7 +26,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup/>} />
         <Route path="/service/:business_name/:business_id" element={<ShopHome/>} />
-        
+        <Route path="/business/registration" element={<Business/>} />
         {/* Add other routes here */}
       </Routes>
       {(location.pathname !== '/login' && location.pathname !== '/signup') && <Footer />}
